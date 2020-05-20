@@ -1,5 +1,5 @@
 from PySide2.QtWidgets import *
-from random import *
+import random
 
 class Window(QWidget):
     def __init__(self):
@@ -9,9 +9,10 @@ class Window(QWidget):
         self.layout = QVBoxLayout()
         self.__text = QLabel("CSI")
         self.button1 = QPushButton("changer de Cycle")
+        self.cycles = ["CSI", "CIR", "BIOST", "CENT", "BIAST", "EST"]
         self.layout.addWidget(self.__text)
         self.layout.addWidget(self.button1)
-        self.button1.clicked.connect(self.buttonClicked())
+        self.button1.clicked.connect(self.__text.setText(random.choice(self.cycles)))
         self.setLayout(self.layout)
 
     def buttonClicked(self):
