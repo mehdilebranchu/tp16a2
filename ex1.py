@@ -12,13 +12,11 @@ class Window(QWidget):
         self.cycles = ["CSI", "CIR", "BIOST", "CENT", "BIAST", "EST"]
         self.layout.addWidget(self.__text)
         self.layout.addWidget(self.button1)
-        self.button1.clicked.connect(self.__text.setText(random.choice(self.cycles)))
+        self.button1.clicked.connect(self.change)
         self.setLayout(self.layout)
 
-    def buttonClicked(self):
-        cycles = ["CSI", "CIR", "BIOST", "CENT", "BIAST", "EST"]
-        r = randint(0,len(cycles)-1)
-        self.__text.setText(cycles[r])
+    def change(self):
+        self.__text.setText(random.choice(self.cycles))
 
 if __name__ == "__main__":
    app = QApplication([])
